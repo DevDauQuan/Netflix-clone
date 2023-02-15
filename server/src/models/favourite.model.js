@@ -2,33 +2,33 @@ import mongoose, { Schema } from "mongoose";
 import modelOptions from "./model.option.js";
 
 export default mongoose.model(
-    "Favorite", mongoose.Schema({
+    "Favorite",
+    mongoose.Schema({
         user: {
             type: Schema.Types.ObjectId,
-            ref: "USer",
-            require: true,
+            ref: "User",
+            required: true
         },
         mediaType: {
             type: String,
             enum: ["tv", "movie"],
-            require: true,
+            required: true
         },
-
         mediaId: {
             type: String,
-            require: true,
+            required: true
         },
         mediaTitle: {
             type: String,
-            require: true,
+            required: true
         },
         mediaPoster: {
             type: String,
-            require: true,
+            required: true
         },
         mediaRate: {
             type: Number,
-            require: true,
+            required: true
         },
-    }.modelOptions)
-)
+    }, modelOptions)
+);

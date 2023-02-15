@@ -76,7 +76,8 @@ const getDetail = async (req, res) => {
         responseHandle.ok(res, media);
 
     }
-    catch {
+    catch (err) {
+        console.log(err);
         responseHandle.error(res);
     }
 }

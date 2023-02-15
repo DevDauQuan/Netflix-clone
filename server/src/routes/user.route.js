@@ -54,9 +54,9 @@ router.put("update-password",
 
 router.get("/info", tokenMiddleware.auth, userController.getInfo);
 
-router.get("/favorite", tokenMiddleware.auth, favoriteController.getFavoriteOfUser);
+router.get("/favorites", tokenMiddleware.auth, favoriteController.getFavoritesOfUser);
 
-router.post("/favorite", tokenMiddleware.auth,
+router.post("/favorites", tokenMiddleware.auth,
     body("mediatype").exists().withMessage("mediatype is required").custom(type => ["movie", "tv"].includes(type)).withMessage("mediaType invalid"),
     body("mediaId").exists().withMessage("mediaId is required")
         .isLength({ min: 1 }).withMessage("mediaId can not be empty"),
@@ -66,6 +66,6 @@ router.post("/favorite", tokenMiddleware.auth,
     favoriteController.addFavorite
 )
 
-router.delete("/favorite/:favoriteId", tokenMiddleware.auth, favoriteController.removeFavorite);
+router.delete("/favorites/:favoriteId", tokenMiddleware.auth, favoriteController.removeFavorite);
 
 export default router;
